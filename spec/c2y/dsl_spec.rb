@@ -16,7 +16,6 @@ end
         it do
           dsl = described_class.define(cloudconfigfile)
           update = dsl.result.update.result
-          expect(update).not_to be nil
           expect(update.group).to eq "alpha"
           expect(update.reboot_strategy).to eq "off"
         end
@@ -37,7 +36,6 @@ end
         it do
           dsl = described_class.define(cloudconfigfile)
           update = dsl.result.update.result
-          expect(update).not_to be nil
           expect(update.group).to eq "beta"
           expect(update.reboot_strategy).to eq "best-effort"
         end
