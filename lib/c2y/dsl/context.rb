@@ -11,11 +11,11 @@ module C2y
     private
 
     def update(&block)
-      @result.update = Update.new(&block)
+      @result.update = Update.new(&block).result
     end
 
     def unit(name, &block)
-      @result.unit = Unit.new(name, &block)
+      @result.unit = Unit.new(name, &block).result
     end
   end
 end
