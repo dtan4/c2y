@@ -2,7 +2,7 @@ module C2y
   class DSL
     class << self
       def parse(path)
-        self.new(path)
+        self.new(path).result
       end
     end
 
@@ -17,7 +17,7 @@ module C2y
     private
 
     def update(&block)
-      @result.update = Update.new(&block)
+      @result.update = Update.new(&block).result
     end
 
     class Update
@@ -44,7 +44,7 @@ module C2y
     end
 
     def unit(name, &block)
-      @result.unit = Unit.new(name, &block)
+      @result.unit = Unit.new(name, &block).result
     end
 
     class Unit
