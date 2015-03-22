@@ -1,5 +1,9 @@
 module C2y
   class DSL::Context
+    def self.eval(path)
+      self.new(path)
+    end
+
     attr_reader :result
 
     def initialize(path)
