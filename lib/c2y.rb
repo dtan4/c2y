@@ -3,6 +3,9 @@ require "ostruct"
 require "c2y/version"
 
 require "c2y/dsl"
+require "c2y/dsl/context"
+require "c2y/dsl/context/unit"
+require "c2y/dsl/context/update"
 
 module C2y
   # Your code goes here...
