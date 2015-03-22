@@ -14,7 +14,7 @@ end
         end
 
         it do
-          dsl = DSL.define(cloudconfigfile)
+          dsl = described_class.define(cloudconfigfile)
           update = dsl.result.update.result
           expect(update).not_to be nil
           expect(update.group).to eq "alpha"
@@ -35,7 +35,7 @@ end
         end
 
         it do
-          dsl = DSL.define(cloudconfigfile)
+          dsl = described_class.define(cloudconfigfile)
           update = dsl.result.update.result
           expect(update).not_to be nil
           expect(update.group).to eq "beta"
