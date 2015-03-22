@@ -1,7 +1,7 @@
 module C2y
   class DSL
     class << self
-      def define(path)
+      def parse(path)
         self.new(path)
       end
     end

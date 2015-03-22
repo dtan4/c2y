@@ -14,7 +14,7 @@ end
         end
 
         it do
-          dsl = described_class.define(cloudconfigfile)
+          dsl = described_class.parse(cloudconfigfile)
           update = dsl.result.update.result
           expect(update.group).to eq "alpha"
           expect(update.reboot_strategy).to eq "off"
@@ -34,7 +34,7 @@ end
         end
 
         it do
-          dsl = described_class.define(cloudconfigfile)
+          dsl = described_class.parse(cloudconfigfile)
           update = dsl.result.update.result
           expect(update.group).to eq "beta"
           expect(update.reboot_strategy).to eq "best-effort"
@@ -68,7 +68,7 @@ end
         end
 
         it do
-          dsl = described_class.define(cloudconfigfile)
+          dsl = described_class.parse(cloudconfigfile)
           unit = dsl.result.unit.result
           expect(unit.name).to eq "docker-tcp"
           expect(unit.command).to eq "start"
