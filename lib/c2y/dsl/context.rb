@@ -9,6 +9,7 @@ module C2y
     def initialize(path)
       @result = OpenStruct.new(
         container_units: [],
+        files: [],
         update: nil,
         units: [],
         users: [],
@@ -21,6 +22,10 @@ module C2y
 
     def container_unit(name, &block)
       @result.container_units << ContainerUnit.new(name, &block).result
+    end
+
+    def file(path, &block)
+      @result.files << File.new(path, &block).result
     end
 
     def update(&block)
