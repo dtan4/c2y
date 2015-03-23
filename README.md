@@ -1,6 +1,6 @@
 # C2y
 
-A DSL for [cloud-config.yml](https://coreos.com/docs/cluster-management/setup/cloudinit-cloud-config/)
+A Ruby DSL for [cloud-config.yml](https://coreos.com/docs/cluster-management/setup/cloudinit-cloud-config/)
 
 [![Build Status](https://travis-ci.org/dtan4/c2y.svg?branch=master)](https://travis-ci.org/dtan4/c2y)
 [![Code Climate](https://codeclimate.com/github/dtan4/c2y/badges/gpa.svg)](https://codeclimate.com/github/dtan4/c2y)
