@@ -10,7 +10,8 @@ module C2y
       @result = OpenStruct.new(
         container_units: [],
         update: nil,
-        units: []
+        units: [],
+        users: [],
       )
       contents = open(path).read
       instance_eval(contents)
@@ -28,6 +29,10 @@ module C2y
 
     def unit(name, &block)
       @result.units << Unit.new(name, &block).result
+    end
+
+    def user(name, &block)
+      @result.users << User.new(name, &block).result
     end
   end
 end
