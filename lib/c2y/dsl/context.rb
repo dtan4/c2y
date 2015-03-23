@@ -14,6 +14,10 @@ module C2y
 
     private
 
+    def container_unit(name, &block)
+      @result.container_unit = ContainerUnit.new(name, &block).result
+    end
+
     def update(&block)
       @result.update = Update.new(&block).result
     end

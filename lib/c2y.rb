@@ -4,6 +4,7 @@ require "c2y/version"
 
 require "c2y/dsl"
 require "c2y/dsl/context"
+require "c2y/dsl/context/container_unit"
 require "c2y/dsl/context/unit"
 require "c2y/dsl/context/update"
 
