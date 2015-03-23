@@ -7,7 +7,11 @@ module C2y
     attr_reader :result
 
     def initialize(path)
-      @result = OpenStruct.new
+      @result = OpenStruct.new(
+        container_units: [],
+        update: nil,
+        units: []
+      )
       contents = open(path).read
       instance_eval(contents)
     end
@@ -15,7 +19,7 @@ module C2y
     private
 
     def container_unit(name, &block)
-      @result.container_unit = ContainerUnit.new(name, &block).result
+      @result.container_units << ContainerUnit.new(name, &block).result
     end
 
     def update(&block)
@@ -23,7 +27,7 @@ module C2y
     end
 
     def unit(name, &block)
-      @result.unit = Unit.new(name, &block).result
+      @result.units << Unit.new(name, &block).result
     end
   end
 end

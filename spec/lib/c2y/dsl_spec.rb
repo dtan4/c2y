@@ -69,7 +69,8 @@ end
 
         it do
           dsl = described_class.parse(cloudconfigfile)
-          unit = dsl.unit
+          expect(dsl.units.length).to eq 1
+          unit = dsl.units.first
           expect(unit.name).to eq "docker-tcp"
           expect(unit.command).to eq "start"
           expect(unit.enable).to be true
@@ -119,7 +120,8 @@ end
 
         it do
           dsl = described_class.parse(cloudconfigfile)
-          container_unit = dsl.container_unit
+          expect(dsl.container_units.length).to eq 1
+          container_unit = dsl.container_units.first
           expect(container_unit.name).to eq "nginx"
           expect(container_unit.enable).to be true
           expect(container_unit.environments).to eql({
