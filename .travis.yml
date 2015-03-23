@@ -3,4 +3,5 @@ rvm:
 - 2.2
 - 2.1
 - 2.0.0
-secure: "Uqiq8YPDkJZZUWx7bS/Gta/AkdIP1J3S/i96zDWfQaZRJhzDbE/KgtDCIrSn+q6cohuYzk4HbyT2Dh+4gf+xUpcJF+P9Eg/HeEiw7xjk2JopzBpbJc1uK7abrZW523yDhRZv//Ad0rZjuD0hJqveM3RwPWX1TFbh3RLafIjoXRY="
+env:
+  - secure: "Uqiq8YPDkJZZUWx7bS/Gta/AkdIP1J3S/i96zDWfQaZRJhzDbE/KgtDCIrSn+q6cohuYzk4HbyT2Dh+4gf+xUpcJF+P9Eg/HeEiw7xjk2JopzBpbJc1uK7abrZW523yDhRZv//Ad0rZjuD0hJqveM3RwPWX1TFbh3RLafIjoXRY="
