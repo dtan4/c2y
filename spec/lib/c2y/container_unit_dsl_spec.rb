@@ -30,23 +30,24 @@ end
           ENV["SERVER_NAME"] = env_server_name
         end
 
-        it do
+        subject do
           dsl = described_class.parse(cloudconfigfile)
-          expect(dsl.container_units.length).to eq 1
-          container_unit = dsl.container_units.first
-          expect(container_unit.name).to eq "nginx"
-          expect(container_unit.enable).to be true
-          expect(container_unit.environments).to eql({
-            "SERVER_NAME" => server_name
-          })
-          expect(container_unit.image).to eq "nginx"
-          expect(container_unit.ports).to eql([
-            "80:80"
-          ])
-          expect(container_unit.volumes).to eql([
-            "/home/core/html:/var/www/html"
-          ])
-#           expect(container_unit.content).to eq(<<-EOS)
+          dsl.container_units.first
+        end
+
+        its(:name) { is_expected.to eq "nginx" }
+        its(:enable) { is_expected.to be true }
+        its(:environments) { is_expected.to eql({
+          "SERVER_NAME" => server_name
+        })}
+        its(:image) { is_expected.to eq "nginx" }
+        its(:ports) { is_expected.to eql([
+          "80:80"
+        ])}
+        its(:volumes) { is_expected.to eql([
+          "/home/core/html:/var/www/html"
+        ])}
+#         its(:content) { is_expected.to eq(<<-EOS) }
 # [Unit]
 # Description=Docker Socket for the API
 
@@ -58,7 +59,6 @@ end
 # [Install]
 # WantedBy=sockets.target
 #           EOS
-        end
       end
     end
   end
