@@ -24,14 +24,15 @@ end
           end
         end
 
-        it do
+        subject do
           dsl = described_class.parse(cloudconfigfile)
-          expect(dsl.files.length).to eq 1
-          file  = dsl.files.first
-          expect(file.path).to eq "/etc/ssh/sshd_config"
-          expect(file.permissions).to eq "0600"
-          expect(file.owner).to eq "root:root"
-          expect(file.content).to eq(<<-EOS)
+          dsl.files.first
+        end
+
+        its(:path) { is_expected.to eq "/etc/ssh/sshd_config" }
+        its(:permissions){ is_expected.to eq "0600" }
+        its(:owner){ is_expected.to eq "root:root" }
+        its(:content) { is_expected.to eq(<<-EOS) }
 # Use most defaults for sshd configuration.
 UsePrivilegeSeparation sandbox
 Subsystem sftp internal-sftp
@@ -39,8 +40,7 @@ Subsystem sftp internal-sftp
 PermitRootLogin no
 PasswordAuthentication no
 ChallengeResponseAuthentication no
-          EOS
-        end
+        EOS
       end
     end
   end
