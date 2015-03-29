@@ -27,14 +27,15 @@ end
           end
         end
 
-        it do
+        subject do
           dsl = described_class.parse(cloudconfigfile)
-          expect(dsl.units.length).to eq 1
-          unit = dsl.units.first
-          expect(unit.name).to eq "docker-tcp"
-          expect(unit.command).to eq "start"
-          expect(unit.enable).to be true
-          expect(unit.content).to eq(<<-EOS)
+          dsl.units.first
+        end
+
+        its(:name) { is_expected.to eq "docker-tcp" }
+        its(:command) { is_expected.to eq "start" }
+        its(:enable) { is_expected.to be true }
+        its(:content) { is_expected.to eq(<<-EOS) }
 [Unit]
 Description=Docker Socket for the API
 
@@ -45,8 +46,7 @@ BindIPv6Only=both
 
 [Install]
 WantedBy=sockets.target
-          EOS
-        end
+        EOS
       end
     end
   end
