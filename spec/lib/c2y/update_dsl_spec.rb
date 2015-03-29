@@ -13,12 +13,13 @@ end
           end
         end
 
-        it do
+        subject do
           dsl = described_class.parse(cloudconfigfile)
-          update = dsl.update
-          expect(update.group).to eq "alpha"
-          expect(update.reboot_strategy).to eq "off"
+          dsl.update
         end
+
+        its(:group) { is_expected.to eq "alpha" }
+        its(:reboot_strategy) { is_expected.to eq "off" }
       end
 
       context "with options" do
@@ -33,12 +34,13 @@ end
           end
         end
 
-        it do
+        subject do
           dsl = described_class.parse(cloudconfigfile)
-          update = dsl.update
-          expect(update.group).to eq "beta"
-          expect(update.reboot_strategy).to eq "best-effort"
+          dsl.update
         end
+
+        its(:group) { is_expected.to eq "beta" }
+        its(:reboot_strategy) { is_expected.to eq "best-effort" }
       end
     end
   end
