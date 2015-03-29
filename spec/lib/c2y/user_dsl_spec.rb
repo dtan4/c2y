@@ -15,14 +15,14 @@ end
           end
         end
 
-        it do
+        subject do
           dsl = described_class.parse(cloudconfigfile)
-          expect(dsl.users.length).to eq 1
-          user = dsl.users.first
-          expect(user.name).to eq "dtan4"
-          expect(user.github).to eq "dtan4"
-          expect(user.groups).to eql(%w(sudo docker))
+          dsl.users.first
         end
+
+        its(:name) { is_expected.to eq "dtan4" }
+        its(:github) { is_expected.to eq "dtan4" }
+        its(:groups) { is_expected.to eql(%w(sudo docker)) }
       end
     end
   end
