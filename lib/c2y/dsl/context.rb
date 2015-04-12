@@ -32,6 +32,10 @@ module C2y
       @result.files << File.new(path, &block).result
     end
 
+    def fleet(&block)
+      @result.fleet = Fleet.new(&block).result
+    end
+
     def update(&block)
       @result.update = Update.new(&block).result
     end
