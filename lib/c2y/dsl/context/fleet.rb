@@ -8,14 +8,12 @@ module C2y
       instance_eval(&block)
     end
 
-    private
+    [:public_ip, :metadata].each do |attr|
+      define_method(attr) do |arg|
+        @result.send("#{attr}=", arg)
+      end
 
-    def public_ip(fleet_public_ip)
-      @result.public_ip = fleet_public_ip
-    end
-
-    def metadata(fleet_metadata)
-      @result.metadata = fleet_metadata
+      private attr
     end
   end
 end
