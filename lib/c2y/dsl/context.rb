@@ -24,6 +24,10 @@ module C2y
       @result.container_units << ContainerUnit.new(name, &block).result
     end
 
+    def etcd(name, &block)
+      @result.etcd = Etcd.new(name, &block).result
+    end
+
     def file(path, &block)
       @result.files << File.new(path, &block).result
     end
