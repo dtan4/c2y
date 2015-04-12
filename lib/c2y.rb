@@ -1,7 +1,9 @@
 require "ostruct"
+require "yaml"
 
 require "c2y/version"
 
+require "c2y/client"
 require "c2y/dsl"
 require "c2y/dsl/context"
 require "c2y/dsl/context/container_unit"
