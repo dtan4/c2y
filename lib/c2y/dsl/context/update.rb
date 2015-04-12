@@ -11,14 +11,12 @@ module C2y
       instance_eval(&block)
     end
 
-    private
+    [:group, :reboot_strategy].each do |attr|
+      define_method(attr) do |arg|
+        @result.send("#{attr}=", arg)
+      end
 
-    def group(channel)
-      @result.group = channel.to_s
-    end
-
-    def reboot_strategy(strategy)
-      @result.reboot_strategy = strategy.to_s
+      private attr
     end
   end
 end
