@@ -10,18 +10,12 @@ module C2y
       instance_eval(&block)
     end
 
-    private
+    [:command, :content, :enable].each do |attr|
+      define_method(attr) do |arg|
+        @result.send("#{attr}=", arg)
+      end
 
-    def command(unit_command)
-      @result.command = unit_command.to_s
-    end
-
-    def content(unit_content)
-      @result.content = unit_content
-    end
-
-    def enable(unit_enable)
-      @result.enable = unit_enable
+      private attr
     end
   end
 end

@@ -10,18 +10,12 @@ module C2y
       instance_eval(&block)
     end
 
-    private
+    [:content, :owner, :permissions].each do |attr|
+      define_method(attr) do |arg|
+        @result.send("#{attr}=", arg)
+      end
 
-    def content(file_content)
-      @result.content = file_content
-    end
-
-    def owner(file_owner)
-      @result.owner = file_owner
-    end
-
-    def permissions(file_permissions)
-      @result.permissions = file_permissions
+      private attr
     end
   end
 end

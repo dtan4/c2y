@@ -33,7 +33,7 @@ end
         end
 
         its(:name) { is_expected.to eq "docker-tcp" }
-        its(:command) { is_expected.to eq "start" }
+        its(:command) { is_expected.to eq :start }
         its(:enable) { is_expected.to be true }
         its(:content) { is_expected.to eq(<<-EOS) }
 [Unit]

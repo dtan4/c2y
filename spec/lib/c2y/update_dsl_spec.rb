@@ -39,7 +39,7 @@ end
           dsl.update
         end
 
-        its(:group) { is_expected.to eq "beta" }
+        its(:group) { is_expected.to eq :beta }
         its(:reboot_strategy) { is_expected.to eq "best-effort" }
       end
     end

@@ -10,14 +10,12 @@ module C2y
       instance_eval(&block)
     end
 
-    private
+    [:github, :groups].each do |attr|
+      define_method(attr) do |arg|
+        @result.send("#{attr}=", arg)
+      end
 
-    def github(user_github)
-      @result.github = user_github
-    end
-
-    def groups(user_groups)
-      @result.groups = user_groups
+      private attr
     end
   end
 end

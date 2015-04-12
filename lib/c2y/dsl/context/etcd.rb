@@ -10,18 +10,12 @@ module C2y
       instance_eval(&block)
     end
 
-    private
+    [:addr, :discovery, :peer_addr].each do |attr|
+      define_method(attr) do |arg|
+        @result.send("#{attr}=", arg)
+      end
 
-    def addr(etcd_addr)
-      @result.addr = etcd_addr
-    end
-
-    def discovery(etcd_discovery)
-      @result.discovery = etcd_discovery
-    end
-
-    def peer_addr(etcd_peer_addr)
-      @result.peer_addr = etcd_peer_addr
+      private attr
     end
   end
 end

@@ -10,30 +10,12 @@ module C2y
       instance_eval(&block)
     end
 
-    private
+    [:command, :enable, :environments, :image, :ports, :volumes].each do |attr|
+      define_method(attr) do |arg|
+        @result.send("#{attr}=", arg)
+      end
 
-    def command(unit_command)
-      @result.command = unit_command.to_s
-    end
-
-    def enable(unit_enable)
-      @result.enable = unit_enable
-    end
-
-    def environments(unit_environments)
-      @result.environments = unit_environments
-    end
-
-    def image(unit_image)
-      @result.image = unit_image
-    end
-
-    def ports(unit_ports)
-      @result.ports = unit_ports
-    end
-
-    def volumes(unit_volumes)
-      @result.volumes = unit_volumes
+      private attr
     end
   end
 end
